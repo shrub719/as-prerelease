@@ -6,3 +6,4 @@
 - rock and boulder are separate tiles?
 - pirate start position is constant
 - can you go inside the hut (maybe look at the treasure map)
+- change map size
