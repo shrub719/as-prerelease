@@ -1,4 +1,11 @@
 # Prerelease Notes
+
+## Section C questions
+
+1. 4 marks + 1 screenshot **(5)**
+2. 10 marks + 2 screenshots **(12)**
+3. 12 marks + 1 screenshot **(13)**
+
 ## Potential questions
 - can dig up a coconut more than once
 - can only walk up to 9 spaces
@@ -6,4 +13,10 @@
 - rock and boulder are separate tiles?
 - pirate start position is constant
 - can you go inside the hut (maybe look at the treasure map)
-- change map size
+- list reinitialised twice at start
+  - change map size
+  - make a gameplay loop to try again
+- unused parameters
+  - `HiddenMap` in `PirateWalks`
+  - `Answer` in `GetPirateAction`
+- moving any distance costs the same score
