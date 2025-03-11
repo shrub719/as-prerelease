@@ -20,3 +20,4 @@
   - `HiddenMap` in `PirateWalks`
   - `Answer` in `GetPirateAction`
 - moving any distance costs the same score
+- unidentified item in `DisplayFind`
