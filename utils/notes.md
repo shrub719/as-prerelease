@@ -11,7 +11,7 @@
 - can only walk up to 9 spaces
 - score starts at 100 but you never lose points
 - rock and boulder are separate tiles?
-- pirate start position is constant
+- pirate start position is constant: change spawn point, but keep next to water
 - can you go inside the hut (maybe look at the treasure map)
 - list reinitialised twice at start
   - change map size
