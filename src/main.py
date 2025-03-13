@@ -278,12 +278,16 @@ def DisplayResults(Pirate):
     print(f"The score is {Pirate.Score}")
 
 def TreasureIsland():
+    # define a new MapSizeRecord, setting the values to their defaults
     MapSize = MapSizeRecord()
     Map = [[SAND for i in range(MAX_COLUMNS)] for j in range(MAX_ROWS)]
     HiddenMap = [[SAND for i in range(MAX_COLUMNS)] for j in range(MAX_ROWS)]
     Pirate = PirateRecord()
+    # LOOP HERE!! see notes
+    # this would all be indented >>
     MapSize = ResetMapSize(MapSize)
     ResetMaps(Map, HiddenMap)
+    # program breaks when no file
     MapSize = GenerateMap(Map, MapSize)
     GenerateHiddenMap(HiddenMap)
     ResetPirateRecord(Pirate)
