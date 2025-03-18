@@ -26,3 +26,7 @@
 - program breaks if there's no file
 - Q2 is likely to include selection logic that requires testing both sides
 - `PIRATES` constant is plural?
+
+## Remember
+- the pirate's location marker `P` is overwritten when digging,
+but the location is kept track of in `PirateRecord`
