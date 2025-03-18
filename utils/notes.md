@@ -25,3 +25,4 @@
 - unidentified item in `DisplayFind`
 - program breaks if there's no file
 - Q2 is likely to include selection logic that requires testing both sides
+- `PIRATES` constant is plural?
