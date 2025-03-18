@@ -14,13 +14,14 @@
 - pirate start position is constant: change spawn point, but keep next to water
 - can you go inside the hut (maybe look at the treasure map)
 - list reinitialised twice at start
-  - change map size
-  - make a gameplay loop to try again
-    - once score goes to zero
-    - unlikely to be after finding treasure unless it changes position (doubt)
+    - change map size
+    - make a gameplay loop to try again
+        - once score goes to zero
+        - unlikely to be after finding treasure unless it changes position (doubt)
 - unused parameters
-  - `HiddenMap` in `PirateWalks`
-  - `Answer` in `GetPirateAction`
+    - `HiddenMap` in `PirateWalks`
+    - `Answer` in `GetPirateAction`
 - moving any distance costs the same score
 - unidentified item in `DisplayFind`
 - program breaks if there's no file
+- Q2 is likely to include selection logic that requires testing both sides
