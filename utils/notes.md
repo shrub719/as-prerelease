@@ -30,3 +30,5 @@
 ## Remember
 - the pirate's location marker `P` is overwritten when digging,
 but the location is kept track of in `PirateRecord`
+- while coins and coconuts can be dug up multiple times,
+digging up treasure causes the game to end with `PirateRecord.FoundTreasure`
