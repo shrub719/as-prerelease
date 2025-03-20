@@ -256,6 +256,9 @@ def DisplayFind(Map, Pirate, ItemFound):
 def PirateDigs(Map, HiddenMap, Pirate):
     if HiddenMap[Pirate.Row][Pirate.Column] != SAND:
         DisplayFind(Map, Pirate, HiddenMap[Pirate.Row][Pirate.Column])
+        # as DisplayFind checks the HiddenMap position,
+        # replacing it with sand stops anything from being dug up twice
+        # and treats it as if digging up nothing
         HiddenMap[Pirate.Row][Pirate.Column] = SAND
     else:
         print("Nothing found")
