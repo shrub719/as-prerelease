@@ -291,6 +291,7 @@ def Boom(Map, HiddenMap, Pirate):
     Pirate.UsedDynamite = True
 
 def PirateUsesDynamite(Map, HiddenMap, Pirate):
+    # checks for UsedDynamite flag
     if Pirate.UsedDynamite:
         print("You have already used your dynamite.")
         return
