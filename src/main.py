@@ -13,6 +13,7 @@ ROCK = 'R'
 HUT = 'H'
 TREE = '*'
 BOULDER = 'B'
+HOLE = 'O'
 
 BLANK = " "
 PRESSED_ENTER = ""
@@ -254,9 +255,12 @@ def DisplayFind(Map, Pirate, ItemFound):
     print(f"Found {Item}")
 
 def PirateDigs(Map, HiddenMap, Pirate):
-    if HiddenMap[Pirate.Row][Pirate.Column] != SAND:
-        DisplayFind(Map, Pirate, HiddenMap[Pirate.Row][Pirate.Column])
-        HiddenMap[Pirate.Row][Pirate.Column] = SAND
+    HiddenDug = HiddenMap[Pirate.Row][Pirate.Column]
+    if HiddenDug not in [SAND, HOLE]:
+        DisplayFind(Map, Pirate, HiddenDug)
+        HiddenMap[Pirate.Row][Pirate.Column] = HOLE
+    elif HiddenDug == HOLE:
+        print("Cannot dig in same spot twice")
     else:
         print("Nothing found")
     Pirate.Score -= 10
