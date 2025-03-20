@@ -6,4 +6,4 @@ and my solutions for several proposed questions.
 ## How to Use
 
 - This branch (main) contains the original code and prerelease PDF.
-- The [notes branch](./tree/notes)
+- The [notes branch](../tree/notes)
