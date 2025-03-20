@@ -283,7 +283,7 @@ def Boom(Map, HiddenMap, Pirate):
             if FoundItem == TREASURE:
                 # delete treasure
                 HiddenMap[Square[0]][Square[1]] = SAND
-                print("oops...")
+                print("Oops...")
             elif FoundItem != SAND:
                 # claims each item in the surrounding squares
                 DisplayFind(Map, Pirate, FoundItem)
