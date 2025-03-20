@@ -265,7 +265,7 @@ def PirateDigs(Map, HiddenMap, Pirate):
     Pirate.Score -= 10
     Pirate.DigTime += 1.75
 
-def GetSurroundingSquares(Map, HiddenMap, Pirate):
+def Boom(Map, HiddenMap, Pirate):
     # get indexes of surrounding squares
     Col = Pirate.Column
     Row = Pirate.Row
@@ -294,7 +294,7 @@ def PirateUsesDynamite(Map, HiddenMap, Pirate):
     if Pirate.UsedDynamite:
         print("You have already used your dynamite.")
         return
-    GetSurroundingSquares(Map, HiddenMap, Pirate)
+    Boom(Map, HiddenMap, Pirate)
 
 def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
     # added new dynamite (X) option
