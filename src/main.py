@@ -266,6 +266,8 @@ def PirateDigs(Map, HiddenMap, Pirate):
         print("Cannot dig in same spot twice")
     else:
         print("Nothing found")
+        # create hole even if digging sand
+        HiddenMap[Pirate.Row][Pirate.Column] = HOLE
     if HiddenDug != HOLE:
         # only take away score and time if actually dug
         Pirate.Score -= 10
