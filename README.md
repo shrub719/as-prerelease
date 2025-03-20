@@ -1,5 +1,6 @@
-# Title
+# Question Template
 
-> Task.
+> Task description goes here.
 
-Description.
+Create a branch off of this to start a new question.  
+Remember to add the subroutines changed/created to `diff.py`.
