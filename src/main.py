@@ -32,6 +32,7 @@ class PirateRecord:
         self.DigTime = 0.0
         self.TreasureFound = False
         self.NumberOfCoinsFound = 0
+        self.Fatigue = 0
 
 def ResetMapSize(MapSize):
     MapSize.Rows = MAX_ROWS
@@ -258,8 +259,10 @@ def PirateDigs(Map, HiddenMap, Pirate):
         DisplayFind(Map, Pirate, HiddenMap[Pirate.Row][Pirate.Column])
     else:
         print("Nothing found")
-    Pirate.Score -= 10
+    Pirate.Score -= (10 + Pirate.Fatigue*2)
     Pirate.DigTime += 1.75
+    Pirate.Fatigue += 1
+    print("Score:", Pirate.Score)
 
 def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
     Answer = input("Pirate to walk (W) or dig (D), to finish game press Enter: ")
