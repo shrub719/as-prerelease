@@ -263,7 +263,7 @@ def PirateDigs(Map, HiddenMap, Pirate):
     else:
         print("Nothing found")
     # made decrease in score a function of fatigue
-    multiplier = 1
+    multiplier = 0
     if Pirate.Fatigue >= 3:
         multiplier = Pirate.Fatigue - 2
     Pirate.Score -= (10 + multiplier*2)
