@@ -1,6 +1,7 @@
-# Question Template
+# Chasing Treasures
 
-> Task description goes here.
+> The location of the treasure is currently static. 
+> 
+> Have the treasure move location to a valid location every 8 user actions (user actions include walking or digging).
 
-Create a branch off of this to start a new question.  
-Remember to add the subroutines changed/created to `diff.py`.
+Amended program to randomise treasure location periodically.
