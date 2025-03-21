@@ -261,6 +261,11 @@ def PirateDigs(Map, HiddenMap, Pirate):
     Pirate.Score -= 10
     Pirate.DigTime += 1.75
 
+def Flood(Map):
+    # TODO
+    pass
+
+
 def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
     Answer = input("Pirate to walk (W) or dig (D), to finish game press Enter: ")
     while not (Answer == "W" or Answer == "D" or Answer == PRESSED_ENTER):
@@ -269,6 +274,8 @@ def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
         PirateWalks(Map, MapSize, HiddenMap, Pirate)
     elif Answer == "D":
         PirateDigs(Map, HiddenMap, Pirate)
+    # add flooding function
+    Flood(Map)
     return Answer
 
 def DisplayResults(Pirate):
