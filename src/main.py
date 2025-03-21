@@ -26,12 +26,14 @@ class MapSizeRecord:
 
 class PirateRecord:
     def __init__(self):
+        # added property to keep track of next position randomisation
         self.Row = 0
         self.Column = 0
         self.Score = 100
         self.DigTime = 0.0
         self.TreasureFound = False
         self.NumberOfCoinsFound = 0
+        self.ChaseCounter = 8
 
 def ResetMapSize(MapSize):
     MapSize.Rows = MAX_ROWS
@@ -45,12 +47,14 @@ def ResetMaps(Map, HiddenMap):
             HiddenMap[Row][Column] = SAND
 
 def ResetPirateRecord(Pirate):
+    # added property to keep track of next position randomisation
     Pirate.Row = 0
     Pirate.Column = 0
     Pirate.Score = 100
     Pirate.DigTime = 0.0
     Pirate.TreasureFound = False
     Pirate.NumberOfCoinsFound = 0
+    Pirate.ChaseCounter = 8
 
 def GenerateMap(Map, MapSize):
     FileIn = open("MapData.txt", 'r')
@@ -261,6 +265,12 @@ def PirateDigs(Map, HiddenMap, Pirate):
     Pirate.Score -= 10
     Pirate.DigTime += 1.75
 
+def RandomiseTreasure(Map, HiddenMap):
+    # set treasure location to a random location
+    # TODO
+    pass
+
+
 def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
     Answer = input("Pirate to walk (W) or dig (D), to finish game press Enter: ")
     while not (Answer == "W" or Answer == "D" or Answer == PRESSED_ENTER):
@@ -269,6 +279,12 @@ def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
         PirateWalks(Map, MapSize, HiddenMap, Pirate)
     elif Answer == "D":
         PirateDigs(Map, HiddenMap, Pirate)
+    # check current chase counter status
+    if Pirate.ChaseCounter == 0:
+        Pirate.ChaseCounter = 8
+        RandomiseTreasure(Map, HiddenMap)
+    else:
+        Pirate.ChaseCounter -= 1
     return Answer
 
 def DisplayResults(Pirate):
