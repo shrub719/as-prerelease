@@ -1,3 +1,5 @@
+CRATER = 'O'
+
 class PirateRecord:
     def __init__(self):
         # added property
