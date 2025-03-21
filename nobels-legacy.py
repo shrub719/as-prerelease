@@ -19,6 +19,44 @@ def ResetPirateRecord(Pirate):
     Pirate.NumberOfCoinsFound = 0
     Pirate.UsedDynamite = False
 
+def CheckPath(Map, StartRow, StartColumn, EndRow, EndColumn, Direction):
+    # made craters also not count as obstacles
+    o = lambda x: x not in [SAND, CRATER]
+    ObstacleFound = False
+    if Direction == "N":
+        for Row in range(EndRow, StartRow):
+            if o(Map[Row][StartColumn]):
+                ObstacleFound = True
+    elif Direction == "NE":
+        for i in range(1, StartRow - EndRow + 1):
+            if o(Map[StartRow - i][StartColumn + i]):
+                ObstacleFound = True
+    elif Direction == "E":
+        for Column in range(StartColumn + 1, EndColumn + 1):
+            if o(Map[StartRow][Column]):
+                ObstacleFound = True
+    elif Direction == "SE":
+        for i in range(1, EndRow - StartRow + 1):
+            if o(Map[StartRow + i][StartColumn + i]):
+                ObstacleFound = True
+    elif Direction == "S":
+        for Row in range(StartRow + 1, EndRow + 1):
+            if o(Map[Row][StartColumn]):
+                ObstacleFound = True
+    elif Direction == "SW":
+        for i in range(1, EndRow - StartRow + 1):
+            if o(Map[StartRow + i][StartColumn - i]):
+                ObstacleFound = True
+    elif Direction == "W":
+        for Column in range(EndColumn, StartColumn):
+            if o(Map[StartRow][Column]):
+                ObstacleFound = True
+    elif Direction == "NW":
+        for i in range(1, StartRow - EndRow + 1):
+            if o(Map[StartRow - i][StartColumn - i]):
+                ObstacleFound = True
+    return ObstacleFound
+
 def Boom(Map, HiddenMap, Pirate):
     # get indexes of surrounding squares
     Col = Pirate.Column
@@ -42,6 +80,9 @@ def Boom(Map, HiddenMap, Pirate):
                 # claims each item in the surrounding squares
                 DisplayFind(Map, Pirate, FoundItem)
                 Map[Pirate.Row][Pirate.Column] = SAND  # replace "discovered" items on pirate square
+            if Map[Square[0]][Square[1]] != WATER:
+                # replaces non-water squares with craters
+                Map[Square[0]][Square[1]] = CRATER
     Pirate.UsedDynamite = True
 
 def PirateUsesDynamite(Map, HiddenMap, Pirate):
