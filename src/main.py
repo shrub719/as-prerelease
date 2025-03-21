@@ -13,6 +13,7 @@ ROCK = 'R'
 HUT = 'H'
 TREE = '*'
 BOULDER = 'B'
+FLOOD = 'F'  # add flood constant
 
 BLANK = " "
 PRESSED_ENTER = ""
@@ -261,9 +262,20 @@ def PirateDigs(Map, HiddenMap, Pirate):
     Pirate.Score -= 10
     Pirate.DigTime += 1.75
 
-def Flood(Map):
-    # TODO
-    pass
+def Flood(Map, MapSize):
+    # FIX
+    for r, Row in enumerate(Map):
+        for c, Square in enumerate(Row):
+            if Square == WATER:
+                if r != 0: Map[r-1][c] = FLOOD  # flood above
+                if r >= MapSize.Rows: Map[r+1][c] = FLOOD  # flood below
+                if c != 0: Map[r][c-1] = FLOOD  # flood left
+                if c <= MapSize.Columns: Map[r][c+1] = FLOOD  # flood right
+
+    for r, Row in enumerate(Map):
+        for c, Square in enumerate(Row):
+            if Square == FLOOD:
+                Map[r][c] = WATER
 
 
 def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
@@ -275,7 +287,7 @@ def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
     elif Answer == "D":
         PirateDigs(Map, HiddenMap, Pirate)
     # add flooding function
-    Flood(Map)
+    Flood(Map, MapSize)
     return Answer
 
 def DisplayResults(Pirate):
