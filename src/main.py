@@ -1,7 +1,9 @@
 # Skeleton Program for the AQA AS Summer 2025 examination
 # this code should be used in conjunction with the Preliminary Material
 # written by the AQA Programmer Team
-# developed in a Python 3 environment
+# developed in a Python 3 environmen
+
+import random # needed for random position
 
 SAND = '.'
 WATER = 'W'
@@ -265,10 +267,29 @@ def PirateDigs(Map, HiddenMap, Pirate):
     Pirate.Score -= 10
     Pirate.DigTime += 1.75
 
-def RandomiseTreasure(Map, HiddenMap):
+def FindTreasure(MapSize, HiddenMap):
+    r = 0
+    while r < MapSize.Rows:
+        c = 0
+        while c < MapSize.Columns:
+            if HiddenMap[r][c] == TREASURE:
+                return r, c
+            c += 1
+        r += 1
+
+def RandomCoordinate(MapSize):
+    x = random.randint(0, MapSize.Rows)
+    y = random.randint(0, MapSize.Columns)
+    return x, y
+
+def RandomiseTreasure(MapSize, HiddenMap):
     # set treasure location to a random location
-    # TODO
-    pass
+    x, y = FindTreasure(MapSize, HiddenMap)
+    HiddenMap[x][y] = SAND
+    x2, y2 = RandomCoordinate(MapSize)
+    HiddenMap[x2][y2] = TREASURE
+    print(f"Treasure moved from ({x}, {y}) to ({x2}, {y2})")
+
 
 
 def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
@@ -282,7 +303,7 @@ def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
     # check current chase counter status
     if Pirate.ChaseCounter == 0:
         Pirate.ChaseCounter = 8
-        RandomiseTreasure(Map, HiddenMap)
+        RandomiseTreasure(MapSize, HiddenMap)
     else:
         Pirate.ChaseCounter -= 1
     return Answer
