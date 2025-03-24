@@ -290,8 +290,6 @@ def RandomiseTreasure(MapSize, HiddenMap):
     HiddenMap[x2][y2] = TREASURE
     print(f"Treasure moved from ({x}, {y}) to ({x2}, {y2})")
 
-
-
 def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
     Answer = input("Pirate to walk (W) or dig (D), to finish game press Enter: ")
     while not (Answer == "W" or Answer == "D" or Answer == PRESSED_ENTER):
