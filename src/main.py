@@ -268,9 +268,9 @@ def Flood(Map, MapSize):
         for c in range(len(Map[0])):
             if Map[r][c] == WATER:
                 if r != 0: Map[r-1][c] = FLOOD  # flood above
-                if r >= MapSize.Rows: Map[r+1][c] = FLOOD  # flood below
+                if r < MapSize.Rows - 1: Map[r+1][c] = FLOOD  # flood below
                 if c != 0: Map[r][c-1] = FLOOD  # flood left
-                if c <= MapSize.Columns: Map[r][c+1] = FLOOD  # flood right
+                if c >= MapSize.Columns: Map[r][c+1] = FLOOD  # flood right
 
     for r in range(len(Map)):
         for c in range(len(Map[0])):
@@ -280,10 +280,10 @@ def Flood(Map, MapSize):
 
 def GetPirateAction(Map, MapSize, HiddenMap, Pirate, Answer):
     Answer = input("Pirate to walk (W) or dig (D), to finish game press Enter: ")
-    # add flooding function
-    Flood(Map, MapSize)
     while not (Answer == "W" or Answer == "D" or Answer == PRESSED_ENTER):
         Answer = input("Pirate to walk (W) or dig (D), to finish game press Enter: ")
+    # add flooding function
+    Flood(Map, MapSize)
     if Answer == "W":
         PirateWalks(Map, MapSize, HiddenMap, Pirate)
     elif Answer == "D":
