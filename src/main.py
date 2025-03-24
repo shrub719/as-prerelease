@@ -268,9 +268,11 @@ def Flood(Map, MapSize):
         for c in range(len(Map[0])):
             if Map[r][c] == WATER:
                 if r != 0: Map[r-1][c] = FLOOD  # flood above
-                if r < MapSize.Rows - 1: Map[r+1][c] = FLOOD  # flood below
+                try: Map[r+1][c] = FLOOD  # flood below
+                except IndexError: pass
                 if c != 0: Map[r][c-1] = FLOOD  # flood left
-                if c >= MapSize.Columns: Map[r][c+1] = FLOOD  # flood right
+                try: Map[r][c+1] = FLOOD  # flood right
+                except IndexError: pass
 
     for r in range(len(Map)):
         for c in range(len(Map[0])):
