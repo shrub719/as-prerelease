@@ -3,6 +3,7 @@
 # written by the AQA Programmer Team
 # developed in a Python 3 environment
 
+# constants defined for map tiles
 SAND = '.'
 WATER = 'W'
 GOLD_COIN = 'G'
@@ -19,11 +20,18 @@ PRESSED_ENTER = ""
 MAX_ROWS = 20
 MAX_COLUMNS = 50
 
+# note: objects can be passed by reference,
+# so if any value in these collections is modified,
+# it doesn't need to be returned back to take effect
+
+# stores the actual size of the map (separate from the size of the Map list)
 class MapSizeRecord:
     def __init__(self):
         self.Rows = MAX_ROWS
         self.Columns = MAX_COLUMNS
 
+# stores game-relevant properties and importantly,
+# the pirate's current position as the pirate is not always on the map
 class PirateRecord:
     def __init__(self):
         self.Row = 0
@@ -33,6 +41,8 @@ class PirateRecord:
         self.TreasureFound = False
         self.NumberOfCoinsFound = 0
 
+# these reset functions aren't currently necessary,
+# but are probably so that they can make us implement a game loop
 def ResetMapSize(MapSize):
     MapSize.Rows = MAX_ROWS
     MapSize.Columns = MAX_COLUMNS
@@ -52,14 +62,19 @@ def ResetPirateRecord(Pirate):
     Pirate.TreasureFound = False
     Pirate.NumberOfCoinsFound = 0
 
+# reads the map
 def GenerateMap(Map, MapSize):
-    FileIn = open("MapData.txt", 'r')
+    FileIn = open("MapData.txt", 'r')  # MapData.txt must exist in the same directory or it crashes
+    # parses the first line, which is the map size, and adds these values to MapSize
     DataString = FileIn.readline()
     Data = DataString.split(',')
     MapSize.Rows = int(Data[0])
     MapSize.Columns = int(Data[1])
     for Row in range(MapSize.Rows):
+        # note: .readline() means it reads the file one line at a time,
+        # advancing the cursor to the start of the next line every time
         DataString = FileIn.readline()
+        # adds the map spaces character by character to each row
         for Column in range(MapSize.Columns):
             Map[Row][Column] = DataString[Column]
     FileIn.close()
