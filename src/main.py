@@ -267,12 +267,16 @@ def Flood(Map, MapSize):
     for r in range(len(Map)):
         for c in range(len(Map[0])):
             if Map[r][c] == WATER:
-                if r != 0: Map[r-1][c] = FLOOD  # flood above
-                try: Map[r+1][c] = FLOOD  # flood below
-                except IndexError: pass
-                if c != 0: Map[r][c-1] = FLOOD  # flood left
-                try: Map[r][c+1] = FLOOD  # flood right
-                except IndexError: pass
+                for i in range(2):
+                    for j in range(2):
+                        try:
+                            tile = Map[r-1 + i][c-1 + j]
+                            if tile == PIRATES:
+                                raise FloatingPointError("The pirate point is floating in water.")
+                            elif tile != WATER:
+                                Map[r-1 + i][c-1 + j] = FLOOD
+                        except IndexError:
+                            pass
 
     for r in range(len(Map)):
         for c in range(len(Map[0])):
